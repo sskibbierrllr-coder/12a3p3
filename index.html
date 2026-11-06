@@ -4,74 +4,182 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lớp 12A3 - THPT HHT</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background: #f4f6fb;
-      color: #222;
+      background: #f8fafc;
+      color: #334155;
+      line-height: 1.6;
     }
 
+    /* Header hiệu ứng động */
     header {
       background: linear-gradient(135deg, #2563eb, #7c3aed);
       color: #fff;
       text-align: center;
-      padding: 80px 20px;
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #f8fafc;
+      clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 10px;
+      animation: fadeInDown 1s ease-in-out;
     }
 
     header p {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       opacity: 0.9;
+      animation: fadeInUp 1s ease-in-out;
     }
 
+    /* Thanh điều hướng */
     nav {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
-      gap: 30px;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      gap: 40px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
+      z-index: 1000;
     }
 
     nav a {
       text-decoration: none;
-      color: #2563eb;
+      color: #475569;
       font-weight: 600;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    nav a:hover { color: #7c3aed; }
+    nav a:hover { color: #2563eb; }
 
+    /* Phần nội dung */
     section {
-      max-width: 900px;
-      margin: 40px auto;
+      max-width: 1000px;
+      margin: 60px auto;
       padding: 0 20px;
     }
 
     section h2 {
-      margin-bottom: 15px;
-      color: #2563eb;
+      margin-bottom: 20px;
+      color: #1e293b;
+      font-size: 2rem;
+      border-left: 5px solid #2563eb;
+      padding-left: 12px;
     }
 
     .card {
       background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.15);
+    }
+
+    /* Lưới thành viên sinh động */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .member-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .member-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 3px solid #2563eb;
+    }
+
+    .member-card h3 {
+      font-size: 1.1rem;
+      color: #1e293b;
+      margin-bottom: 5px;
+    }
+
+    .member-card p {
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    /* Liên hệ */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.1rem;
+    }
+
+    .contact-item i {
+      color: #2563eb;
+      font-size: 1.3rem;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 20px;
-      background: #1e293b;
-      color: #cbd5e1;
+      padding: 30px;
+      background: #0f172a;
+      color: #94a3b8;
+      margin-top: 80px;
+    }
+
+    /* Keyframes hiệu ứng */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -79,39 +187,59 @@
 
   <header>
     <h1>Lớp 12A3</h1>
-    <p>Trường THPT HHT</p>
+    <p>Nơi lưu giữ thanh xuân tươi đẹp - Trường THPT HHT</p>
   </header>
 
   <nav>
-    <a href="#gioi-thieu">Giới thiệu</a>
-    <a href="#thanh-vien">Thành viên</a>
-    <a href="#lien-he">Liên hệ</a>
+    <a href="#gioi-thieu"><i class="fa-solid fa-house"></i> Giới thiệu</a>
+    <a href="#thanh-vien"><i class="fa-solid fa-users"></i> Thành viên</a>
+    <a href="#lien-he"><i class="fa-solid fa-envelope"></i> Liên hệ</a>
   </nav>
 
   <section id="gioi-thieu">
-    <h2>Giới thiệu</h2>
+    <h2>Về chúng tôi</h2>
     <div class="card">
-      Chào mừng bạn đến với trang web của lớp 12A3, trường THPT HHT.
-      Đây là nơi lưu giữ những kỷ niệm đẹp của tập thể lớp.
+      <p>Chào mừng bạn đến với ngôi nhà chung của tập thể lớp 12A3, trường THPT HHT. Đây là không gian lưu giữ những khoảnh khắc, kỷ niệm đáng nhớ của tuổi học trò dưới mái trường mến yêu trước ngưỡng cửa tương lai.</p>
     </div>
   </section>
 
   <section id="thanh-vien">
-    <h2>Thành viên</h2>
-    <div class="card">
-      Danh sách thành viên sẽ được cập nhật tại đây.
+    <h2>Thành viên tiêu biểu</h2>
+    <div class="member-grid">
+      <div class="member-card">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar">
+        <h3>Nguyễn Văn A</h3>
+        <p>Lớp trưởng</p>
+      </div>
+      <div class="member-card">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" alt="Avatar">
+        <h3>Trần Thị B</h3>
+        <p>Lớp phó học tập</p>
+      </div>
+      <div class="member-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Avatar">
+        <h3>Lê Văn C</h3>
+        <p>Bí thư chi đoàn</p>
+      </div>
     </div>
   </section>
 
   <section id="lien-he">
-    <h2>Liên hệ</h2>
-    <div class="card">
-      Email: lop12a3@example.com
+    <h2>Liên hệ với chúng tôi</h2>
+    <div class="card contact-info">
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email: lop12a3.thpthht@example.com</span>
+      </div>
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Trường THPT HHT</span>
+      </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2026 Lớp 12A3 - THPT HHT
+    <p>&copy; 2026 Lớp 12A3 - THPT HHT. All rights reserved.</p>
   </footer>
 
 </body>
